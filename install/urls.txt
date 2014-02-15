@@ -1,0 +1,13 @@
+I originally installed Chrubuntu for Ubuntu 13.10 on my Acer C270
+using the instructions from:
+
+http://chromeos-cr48.blogspot.co.uk/2013/10/chrubuntu-for-new-chromebooks-now-with.html
+
+The scripts in this directory are copies of the files downloaded
+from these links, for posterity, and so I can any significant changes
+in the future:
+
+https://googledrive.com/host/0B0YvUuHHn3MndlNDbXhPRlB2eFE/chrubuntu-seabios-install.txt
+
+https://googledrive.com/host/0B0YvUuHHn3MndlNDbXhPRlB2eFE/cros-haswell-modules.sh
+
