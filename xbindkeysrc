@@ -1,0 +1,15 @@
+ "xdotool keyup Super+BackSpace; xdotool key Delete; xdotool keydown Super"
+     Mod4 + BackSpace
+# "xdotool keyup Super+Left; xdotool key Home; xdotool keydown Super"
+#     m:0x40 + c:113
+#     Mod4 + Left
+# "xdotool keyup Super+Right; xdotool key End; xdotool keydown Super"
+#     m:0x40 + c:114
+#     Mod4 + Right
+# "xdotool keyup Super+Up; xdotool key Prior; xdotool keydown Super"
+#     m:0x40 + c:111
+#     Mod4 + Up
+# "xdotool keyup Super+Down; xdotool key Next; xdotool keydown Super"
+#     m:0x40 + c:116
+#     Mod4 + Down
+
