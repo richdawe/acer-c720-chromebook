@@ -1,0 +1,5 @@
+# Apply the Chromebook keyboard map if installed.
+if [ -f '/usr/share/X11/xkb/compat/chromebook' ]; then
+    setxkbmap -model chromebook
+fi
+

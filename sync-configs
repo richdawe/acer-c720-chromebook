@@ -1,3 +1,11 @@
-#!/bin/sh
-cp -av ~/.xbindkeysrc xbindkeysrc
+#!/bin/bash -x
+
+if [ -f /etc/X11/Xsession.d/98xkb-chromebook ]; then
+  cp -auv /etc/X11/Xsession.d/98xkb-chromebook .
+fi
+
+# Deprecated
+if [ -f ~/.xbindkeysrc ]; then
+  cp -auv ~/.xbindkeysrc xbindkeysrc
+fi
 
