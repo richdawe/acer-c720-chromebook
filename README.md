@@ -12,6 +12,8 @@ http://www.reddit.com/r/chrubuntu/comments/1rsxkd/list_of_fixes_for_xubuntu_1310
     cd targets
     sudo bash keyboard
 
+TODO: Incorporate keyboard2
+
 Note that the "keyboard" script from Crouton will output
 a number of alarming-looking commands to the terminal, setting various
 default options, but those commands are not actually run!
@@ -48,3 +50,52 @@ After that, the following keyboard combinations will work
  * "search"+down = PgDown
  * "search"+Alt = Capslock
 
+Set up compressed swap in RAM (zram)
+------------------------------------
+
+Having swap on an SSD is a bad idea in terms of wearing out the SSD.
+
+There's a feature called "zram" where some of the RAM is dedicated
+as swap memory, and the swap is compressed into RAM. This can also be faster
+than storing swap on an HDD. The trade off is CPU vs. disk access time
+for HDDs.
+
+First install it:
+
+    apt-get install zram-config
+
+Then disable the swap disk in /etc/fstab. On my machine running
+Ubuntu 14.10 x86_64 I commented out:
+
+    #/dev/mapper/ubuntu--vg-swap_1 none            swap    sw              0       0
+
+Then reboot for everything to take effect.
+
+After that you may wish to free up the Logical Volume (LV)
+that is set up by the Ubuntu installer for swap. I did this online;
+you may wish to do it via a rescue disk. You may find
+https://help.ubuntu.com/community/ResizeEncryptedPartitions#Enlarge_an_encrypted_partition
+helpful.
+
+First, make a backup!
+
+Then switch to the first virtual console using Ctrl+F1, and switch to root:
+
+    sudo -s
+    su -
+
+See what Logical Volumes are defined:
+
+    lvs
+
+Remove the swap LV and resize your root LV to the whole of the Physical Volume.
+Then resize the ext3 or ext4 filesystem ONLINE:
+
+    lvremove ubuntu-vg/swap_1
+    lvresize ubuntu-vg/root +100%FREE
+    resize2fs /dev/mapper/ubuntu--vg--root
+    touch /forcefsck
+
+and then reboot.
+
+Note: Online resizing of ext4 filesystems is supported in Linux 3.x.
