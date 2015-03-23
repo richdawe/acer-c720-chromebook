@@ -65,7 +65,7 @@ First install it:
     apt-get install zram-config
 
 Then disable the swap disk in /etc/fstab. On my machine running
-Ubuntu 14.10 x86_64 I commented out:
+Ubuntu 14.04 LTS x86_64 I commented out:
 
     #/dev/mapper/ubuntu--vg-swap_1 none            swap    sw              0       0
 
@@ -99,3 +99,27 @@ Then resize the ext3 or ext4 filesystem ONLINE:
 and then reboot.
 
 Note: Online resizing of ext4 filesystems is supported in Linux 3.x.
+
+TODO:
+  Try shrinking the zram usage to 1/4 RAM (i.e.: 512 MB RAM) to see
+  if that still works OK.
+
+ChromeOS Touchpad Driver for Linux
+==================================
+
+Hugegreenbug ported the ChromeOS touchpad driver to Linux.
+This gives a much greater responsiveness under Linux,
+and is well worth installing. Links:
+
+  https://github.com/hugegreenbug/xf86-input-cmt
+  https://www.reddit.com/r/chrubuntu/comments/2zb9ao/news_chromeos_mouse_driver_for_linux_version_2/
+
+Instructions to install it:
+
+  sudo apt-add-repository ppa:hugegreenbug/cmt2
+  sudo apt-get update
+  sudo apt-get install xf86-input-cmt
+  # From instructions in Github:
+  sudo mv /usr/share/X11/xorg.conf.d/50-synaptics.conf /usr/share/X11/xorg.conf.d/50-synaptics.conf.out-of-way
+  sudo sync && sudo sync && sudo reboot
+
