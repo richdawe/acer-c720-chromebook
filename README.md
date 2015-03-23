@@ -1,6 +1,12 @@
 acer-c720-chromebook
 ====================
 
+TODO: Initial install of USB DVD drive
+TODO: Kernel parameters for first boot
+TODO: Kernel parameters in grub config
+TODO: Mainline kernel usage
+TODO: laptop-mode-tools install
+
 Setting Up The Keyboard Map
 ---------------------------
 
