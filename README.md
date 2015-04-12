@@ -77,6 +77,17 @@ Ubuntu 14.04 LTS x86_64 I commented out:
 
 Then reboot for everything to take effect.
 
+The default configuration is to use 1/2 physical RAM for compressed swap.
+On a 2 GB machine, that means only 1 GB physical RAM is available
+for resident memory (RSS). To increase that to 1.5 GB RAM,
+change the following line in /etc/init/zram-config.conf :
+
+  mem=$(((totalmem / 2 / ${NRDEVICES}) * 1024))
+
+to:
+
+  mem=$(((totalmem / 4 / ${NRDEVICES}) * 1024))
+
 After that you may wish to free up the Logical Volume (LV)
 that is set up by the Ubuntu installer for swap. I did this online;
 you may wish to do it via a rescue disk. You may find
