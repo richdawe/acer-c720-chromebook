@@ -6,6 +6,8 @@ TODO: Kernel parameters for first boot
 TODO: Kernel parameters in grub config
 TODO: Mainline kernel usage
 TODO: laptop-mode-tools install
+TODO: Links to Chromium website, Arch website, Reddit page
+TODO: https://blogs.fsfe.org/the_unconventional/2014/04/20/c720-ubuntu/
 
 Setting Up The Keyboard Map
 ---------------------------
@@ -121,8 +123,21 @@ TODO:
   Try shrinking the zram usage to 1/4 RAM (i.e.: 512 MB RAM) to see
   if that still works OK.
 
+Setting the Default Backlight
+-----------------------------
+
+Borrowed from https://blogs.fsfe.org/the_unconventional/2014/04/20/c720-ubuntu/ ,
+you can set the default backlight brightness in /etc/rc.local
+by adding something like this before the "exit 0" line:
+
+    # Set brightness to around 40% max brightness.
+    sleep 2
+    echo 322 > /sys/class/backlight/intel_backlight/brightness
+
+TODO: Something about using redshift to change default blue-ish display temp
+
 ChromeOS Touchpad Driver for Linux
-==================================
+----------------------------------
 
 Hugegreenbug ported the ChromeOS touchpad driver to Linux.
 This gives a much greater responsiveness under Linux,
